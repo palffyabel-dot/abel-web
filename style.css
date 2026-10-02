@@ -1,0 +1,619 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050008;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   KEZDŐKÉPERNYŐ
+========================= */
+
+#welcomeScreen {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #3b0066 0%,
+            #12001f 35%,
+            #050008 75%
+        );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+
+    transition: opacity 1s ease,
+                visibility 1s ease;
+}
+
+
+#welcomeScreen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.welcome-content {
+    text-align: center;
+
+    animation: welcomeAppear 1.5s ease;
+}
+
+
+.small-text {
+    color: #b86cff;
+
+    letter-spacing: 5px;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+.welcome-content h1 {
+    font-size: 100px;
+
+    letter-spacing: 15px;
+
+    margin-bottom: 50px;
+
+    text-shadow:
+        0 0 10px #8a2be2,
+        0 0 30px #8a2be2,
+        0 0 70px #8a2be2;
+}
+
+
+/* =========================
+   ENTER GOMB
+========================= */
+
+#enterButton {
+    padding: 18px 50px;
+
+    background: transparent;
+
+    color: white;
+
+    border: 2px solid #9d4edd;
+
+    border-radius: 10px;
+
+    font-size: 17px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition: 0.4s;
+
+    box-shadow:
+        0 0 10px #9d4edd,
+        0 0 25px #9d4edd;
+}
+
+
+#enterButton:hover {
+    background: #9d4edd;
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 15px #9d4edd,
+        0 0 40px #9d4edd,
+        0 0 80px #9d4edd;
+}
+
+
+/* =========================
+   FŐOLDAL
+========================= */
+
+#mainPage {
+    opacity: 0;
+
+    transition: opacity 1.5s ease;
+}
+
+
+#mainPage.visible {
+    opacity: 1;
+}
+
+
+/* =========================
+   NAVIGÁCIÓ
+========================= */
+
+nav {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 25px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(5, 0, 8, 0.65);
+
+    backdrop-filter: blur(10px);
+
+    z-index: 100;
+}
+
+
+.logo {
+    font-size: 25px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+
+.logo span {
+    color: #a855f7;
+}
+
+
+.nav-links {
+    display: flex;
+
+    gap: 35px;
+}
+
+
+.nav-links a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+    transition: 0.3s;
+}
+
+
+.nav-links a:hover {
+    color: #b86cff;
+
+    text-shadow:
+        0 0 10px #9d4edd;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 120px 10%;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 70% 40%,
+            #3b0066 0%,
+            #110018 30%,
+            #050008 70%
+        );
+}
+
+
+.hero-content {
+    max-width: 700px;
+
+    animation: slideUp 1.5s ease;
+}
+
+
+.hero h2 {
+    font-size: 100px;
+
+    letter-spacing: 10px;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 0 10px #8a2be2,
+        0 0 30px #8a2be2,
+        0 0 60px #8a2be2;
+}
+
+
+.description {
+    color: #c8b8d8;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    max-width: 600px;
+}
+
+
+/* =========================
+   GOMBOK
+========================= */
+
+.buttons {
+    display: flex;
+
+    gap: 20px;
+
+    margin-top: 40px;
+}
+
+
+.main-button,
+.secondary-button {
+    padding: 15px 30px;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    letter-spacing: 2px;
+
+    transition: 0.3s;
+}
+
+
+.main-button {
+    background: #9d4edd;
+
+    color: white;
+
+    box-shadow:
+        0 0 20px #9d4edd;
+}
+
+
+.secondary-button {
+    border: 1px solid #9d4edd;
+
+    color: white;
+}
+
+
+.main-button:hover,
+.secondary-button:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 0 30px #9d4edd;
+}
+
+
+/* =========================
+   SZEKCIÓK
+========================= */
+
+.section {
+    min-height: 100vh;
+
+    padding: 140px 10%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.section h2 {
+    font-size: 70px;
+
+    letter-spacing: 8px;
+
+    margin-bottom: 30px;
+
+    text-shadow:
+        0 0 15px #8a2be2;
+}
+
+
+.section-text {
+    max-width: 700px;
+
+    color: #c8b8d8;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    margin-bottom: 60px;
+}
+
+
+/* =========================
+   KÁRTYÁK
+========================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+
+    width: 100%;
+
+    max-width: 1100px;
+}
+
+
+.card {
+    padding: 40px 30px;
+
+    background:
+        rgba(35, 0, 55, 0.5);
+
+    border: 1px solid #4c1975;
+
+    border-radius: 15px;
+
+    transition: 0.4s;
+}
+
+
+.card:hover {
+    transform: translateY(-15px);
+
+    border-color: #a855f7;
+
+    box-shadow:
+        0 0 30px rgba(157, 78, 221, 0.5);
+}
+
+
+.card-icon {
+    font-size: 45px;
+
+    margin-bottom: 20px;
+}
+
+
+.card h3 {
+    margin-bottom: 15px;
+
+    letter-spacing: 2px;
+}
+
+
+.card p {
+    color: #a99bb0;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   PROJEKTEK
+========================= */
+
+.projects {
+    background:
+        radial-gradient(
+            circle at center,
+            #180025,
+            #050008 70%
+        );
+}
+
+
+.project-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+
+    width: 100%;
+
+    max-width: 1100px;
+}
+
+
+.project-card {
+    padding: 35px;
+
+    min-height: 280px;
+
+    background: #0d0015;
+
+    border: 1px solid #4c1975;
+
+    border-radius: 15px;
+
+    text-align: left;
+
+    transition: 0.4s;
+}
+
+
+.project-card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 0 30px rgba(157, 78, 221, 0.5);
+
+    border-color: #a855f7;
+}
+
+
+.project-card span {
+    color: #9d4edd;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+
+.project-card h3 {
+    font-size: 28px;
+
+    margin: 25px 0 15px;
+}
+
+
+.project-card p {
+    color: #a99bb0;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+
+.project-card button {
+    background: transparent;
+
+    border: 1px solid #9d4edd;
+
+    color: white;
+
+    padding: 10px 20px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.project-card button:hover {
+    background: #9d4edd;
+
+    box-shadow:
+        0 0 20px #9d4edd;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 40px;
+
+    text-align: center;
+
+    color: #706477;
+
+    border-top: 1px solid #24102f;
+}
+
+
+/* =========================
+   ANIMÁCIÓK
+========================= */
+
+@keyframes welcomeAppear {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes slideUp {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   TELEFON
+========================= */
+
+@media (max-width: 800px) {
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .welcome-content h1 {
+        font-size: 60px;
+    }
+
+    .hero h2 {
+        font-size: 65px;
+    }
+
+    .cards,
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 120px 7%;
+    }
+
+}
